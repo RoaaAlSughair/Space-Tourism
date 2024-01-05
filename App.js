@@ -24,10 +24,14 @@ class App {
 
   getHeader = () => {
     const header = document.createElement('header');
-    header.innerHTML = `<p>00 Home
-    01 Destination
-    02 Crew
-    03 Technology</p>`;
+    header.innerHTML = `<img src='./assets/shared/logo.svg'>
+    <hr/>
+    <ul>
+    <li><a class='active' href='#'>00 HOME</a></li>
+    <li><a href='#'>01 DESTINATION</a></li>
+    <li><a href='#'>02 CREW</a></li>
+    <li><a href='#'>03 TECHNOLOGY</a></li>
+    </ul>`;
     this.body.append(header);
   };
 
@@ -56,12 +60,16 @@ class App {
   };
 
   getHome = () => {
-    return `<h1>So, you want to travel to
-    Space</h1>
-    <p>  Let’s face it; if you want to go to space, you might as well genuinely go to 
+    return `<div class='wrapper'>
+    <div class="introduction">
+    <p class='heading-5'>SO, YOU WANT TO TRAVEL TO</p>
+    <h1>SPACE</h1>
+    <p>Let's face it; if you want to go to space, you might as well genuinely go to 
     outer space and not hover kind of on the edge of it. Well sit back, and relax 
-    because we’ll give you a truly out of this world experience!</p>
-    <a href='destinations'><button>Explore</button></a>`;
+    because we'll give you a truly out of this world experience!</p>
+    </div>
+    <a href='destinations'><button>EXPLORE</button></a>
+    </div>`;
   };
 
   getCrewMembers = async () => {

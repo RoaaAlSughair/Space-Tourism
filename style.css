@@ -1,30 +1,124 @@
-body {
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+
+body {
   background-image: url('./assets/home/background-home-desktop.jpg');
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  color: #ffffff;
+  font-family: 'Barlow Condensed', sans-serif;
+  color: #D0D6F9;
   height: calc(100vh - 40px);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'BelleFair', sans-serif;
+  color: #ffffff;
+  font-weight: 400;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  text-underline-offset: 24px;
+  text-decoration-thickness: 4px;
+  text-decoration-color: rgba(208, 214, 249, 0.5);
+}
+
+a.active {
+  text-decoration: underline;
+  text-underline-offset: 24px;
+  text-decoration-thickness: 4px;
 }
 
 header {
   margin-top: 40px;
   margin-left: 56px;
   padding: 12px 0;
-  border: 1px solid black;
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
   align-items: center;
-  backdrop-filter: blur(12px);
 }
 
-header p {
+header ul {
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  gap: 28px;
+  background-color: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(12px);
   width: 50%;
+  height: 72px;
+}
+
+header ul a {
+  letter-spacing: 2.7px;
+}
+
+hr {
+  color: #D0D6F9;
+  width: 40%;
+  opacity: 25%;
 }
 
 main {
-  padding: 0 56px;
+  padding: 12px 150px;
+}
+
+.wrapper {
+  margin-top: 15vh;
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+  justify-content: space-between;
+}
+
+.introduction {
+  width: 40%;
+  text-align: justify;
+}
+
+.introduction h1 {
+  font-size: 150px;
+}
+
+.introduction .heading-5 {
+  font-size: 28px;
+  letter-spacing: 4.75px;
+}
+
+button {
+  background-color: #ffffff;
+  height: 274px;
+  width: 274px;
+  border-radius: 50%;
+  border: none;
+  font-size: 32px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  font-family: 'BelleFair', sans-serif;
+}
+
+button:hover {
+  animation: glow 1.5s linear infinite alternate;
+}
+
+@keyframes glow{
+  to {
+    box-shadow: 0px 0px 20px 20px rgba(151, 151, 151, 0.5);
+  }
 }
