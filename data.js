@@ -18,16 +18,16 @@ class Data {
 
   getCrew = async () => {
     if (!this.data) await this.getData();
-    else return this.data.crew;
+    return this.data.crew;
   };
 
   getDestination = async () => {
     if (!this.data) await this.getData();
-    else return this.data.destination;
+    return this.data.destination;
   };
 
   getTechnology = async () => {
     if (!this.data) await this.getData();
-    else return this.data.technology;
+    return this.data.technology;
   }
 }
