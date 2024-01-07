@@ -1,12 +1,10 @@
-class TechnologyView {
+export class TechnologyView {
   constructor() {
     this.body = document.getElementById('view');
   }
 
-  displayContent() {
+  displayContent(content) {
     this.body.innerHTML = '';
-    if (document.location.href == 'technology') {
-      // Display space vessels UI
-    }
+    // Display space vessels UI
   }
 }
