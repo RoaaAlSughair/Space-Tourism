@@ -2,10 +2,11 @@ export class CrewController {
   constructor(model, view) {
     this.model = model;
     this.view = view;
+    this.name = location.hash.slice(1)
   }
 
-  updateView() {
-    const data = this.model.getData();
+  async updateView() {
+    const data = await this.model.getData(this.name);
     this.view.displayContent(data);
   }
 }

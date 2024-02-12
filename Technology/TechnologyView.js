@@ -5,6 +5,42 @@ export class TechnologyView {
 
   displayContent(content) {
     this.body.innerHTML = '';
-    // Display space vessels UI
+
+    // Change the background image
+    this.body.style.backgroundImage =
+      'url("./assets/technology/background-technology-desktop.jpg")';
+
+    // Header and its components
+    const header = document.createElement('header');
+    const img = document.createElement('img');
+    img.src = './assets/shared/logo.svg';
+    const hr = document.createElement('hr');
+    const nav = document.createElement('nav');
+    const navLink1 = document.createElement('a');
+    navLink1.href = '#home';
+    navLink1.textContent = '00 HOME';
+    const navLink2 = document.createElement('a');
+    navLink2.href = '#destination';
+    navLink2.textContent = '01 DESTINATION';
+    const navLink3 = document.createElement('a');
+    navLink3.href = '#crew';
+    navLink3.textContent = '02 CREW';
+    const navLink4 = document.createElement('a');
+    navLink4.href = '#technology';
+    navLink4.textContent = '03 TECHNOLOGY';
+    navLink4.className = 'active';
+
+    // Main
+    const main = document.createElement('main');
+
+    // Displaying the page
+    header.appendChild(img);
+    nav.appendChild(navLink1);
+    nav.appendChild(navLink2);
+    nav.appendChild(navLink3);
+    nav.appendChild(navLink4);
+    header.appendChild(nav);
+    this.body.appendChild(header);
+    this.body.appendChild(main);
   }
 }
