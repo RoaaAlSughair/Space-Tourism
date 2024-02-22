@@ -121,7 +121,7 @@ main {
 }
 
 .introduction .description {
-  line-height: 1.5;
+  line-height: 2rem;
 }
 
 button {
@@ -142,41 +142,54 @@ button:hover {
 
 @keyframes glow{
   to {
-    box-shadow: 0px 0px 20px 20px rgba(151, 151, 151, 0.5);
+    box-shadow: 0px 0px 20px 20px rgba(151, 151, 151, 0.4);
   }
 }
 
+.title{
+  margin: 2rem 0;
+}
+
 .carousel-container {
-  position: relative;
-  max-width: 600px;
-  margin: auto;
   overflow: hidden;
+  display: flex;
+  gap: 10%;
+  align-items: stretch;
 }
 
 .carousel-inner {
   display: flex;
-  transition: transform 0.5s ease-in-out;
+  min-width: 50%;
 }
 
 .carousel-item {
   min-width: 100%;
+  display: none;
+}
+
+.active-item {
+  display: block;
 }
 
 .pagination {
   display: flex;
-  justify-content: center;
-  margin-top: 10px;
+  margin-bottom: 2rem;
+  gap: 2rem;
 }
 
 .dot {
-  height: 10px;
-  width: 10px;
-  margin: 0 5px;
-  background-color: #bbb;
-  border-radius: 50%;
   cursor: pointer;
 }
 
-.active-dot {
-  background-color: #717171;
+.dot:hover, .dot.active {
+  text-underline-offset: 1rem;
+}
+
+.destination-info hr {
+  width: 100%;
+}
+
+.destination-info p {
+  margin: 1rem 0;
+  line-height: 2rem;
 }

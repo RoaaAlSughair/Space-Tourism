@@ -13,6 +13,7 @@ export class HomeView {
     // Header and its components
     const header = document.createElement('header');
     const img = document.createElement('img');
+    img.alt = "Logo";
     img.src = './assets/shared/logo.svg';
     const hr = document.createElement('hr');
     const nav = document.createElement('nav');
@@ -64,6 +65,7 @@ export class HomeView {
 
     // Displaying the page
     header.appendChild(img);
+    header.appendChild(hr);
     nav.appendChild(navLink1);
     nav.appendChild(navLink2);
     nav.appendChild(navLink3);
