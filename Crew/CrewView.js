@@ -4,17 +4,11 @@ export class CrewView {
     this.currentIndex = 0;
   }
 
-  displayContent(content) {
-    this.body.innerHTML = '';
-
-    // Change the background image
-    this.body.style.backgroundImage =
-      'url("./assets/crew/background-crew-desktop.jpg")';
-
+  renderHeader() {
     // Header and its components
     const header = document.createElement('header');
     const img = document.createElement('img');
-    img.alt = "Logo";
+    img.alt = 'Logo';
     img.src = './assets/shared/logo.svg';
     const hr = document.createElement('hr');
     const nav = document.createElement('nav');
@@ -32,17 +26,41 @@ export class CrewView {
     navLink4.href = '#technology';
     navLink4.textContent = '03 TECHNOLOGY';
 
+    header.appendChild(img);
+    header.appendChild(hr);
+    nav.appendChild(navLink1);
+    nav.appendChild(navLink2);
+    nav.appendChild(navLink3);
+    nav.appendChild(navLink4);
+    header.appendChild(nav);
+    this.body.appendChild(header);
+  }
+
+  displayContent(content) {
+    while (this.body.firstChild) {
+      this.body.removeChild(this.body.firstChild);
+    }
+
+    this.renderHeader()
+
+    // Change the background image
+    this.body.style.backgroundImage =
+      'url("./assets/crew/background-crew-desktop.jpg")';
+
     // Main
     const main = document.createElement('main');
+    main.id = 'main';
 
     // Page title
     const title = document.createElement('h5');
     title.textContent = '02 MEET YOUR CREW';
-    title.className = "title";
+    title.className = 'title';
 
     // Carousel
+    const wrapper = document.createElement('div');
+    wrapper.className = 'crew-wrapper';
     const carouselContainer = document.createElement('div');
-    carouselContainer.className = 'carousel-container';
+    carouselContainer.className = 'carousel-container style-2';
     const imageCarousel = document.createElement('div');
     imageCarousel.classList.add('carousel-inner');
     const infoCarousel = document.createElement('div');
@@ -66,18 +84,18 @@ export class CrewView {
       const carouselInfo = document.createElement('div');
       carouselInfo.className = 'carousel-item';
       carouselInfo.classList.add('destination-info');
-      const crew = document.createElement('h2');
+      const crew = document.createElement('h3');
       crew.textContent = elm.name.toUpperCase();
-      const role = document.createElement('p');
-      role.textContent = elm.role;
-      const hr = document.createElement('hr');
+      const role = document.createElement('h4');
+      role.textContent = elm.role.toUpperCase();
       const bio = document.createElement('p');
       bio.textContent = elm.bio;
 
       // Pagination nav
       const dot = document.createElement('a');
-      dot.textContent = elm.name.toUpperCase();
+      dot.htmlContent = '&nbsp;';
       dot.classList.add('dot');
+      dot.classList.add('dot-2');
       dot.setAttribute('index', i);
 
       if (i === this.currentIndex) {
@@ -107,9 +125,8 @@ export class CrewView {
         this.classList.toggle('active');
       });
 
-      carouselInfo.appendChild(crew);
       carouselInfo.appendChild(role);
-      carouselInfo.appendChild(hr);
+      carouselInfo.appendChild(crew);
       carouselInfo.appendChild(bio);
 
       carouselImage.appendChild(img);
@@ -121,20 +138,13 @@ export class CrewView {
     });
 
     // Displaying the page
-    header.appendChild(img);
-    header.appendChild(hr);
-    nav.appendChild(navLink1);
-    nav.appendChild(navLink2);
-    nav.appendChild(navLink3);
-    nav.appendChild(navLink4);
-    header.appendChild(nav);
-    infoAndPage.appendChild(pagination);
+    infoAndPage.appendChild(title);
     infoAndPage.appendChild(infoCarousel);
+    infoAndPage.appendChild(pagination);
     carouselContainer.appendChild(infoAndPage);
     carouselContainer.appendChild(imageCarousel);
-    main.appendChild(title);
-    main.appendChild(carouselContainer);
-    this.body.appendChild(header);
+    wrapper.appendChild(carouselContainer);
+    main.appendChild(wrapper);
     this.body.appendChild(main);
   }
 }

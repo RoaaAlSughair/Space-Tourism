@@ -2,11 +2,10 @@ export class TechnologyController {
   constructor(model, view) {
     this.model = model;
     this.view = view;
-    this.name = location.hash.slice(1);
   }
 
   async updateView() {
-    const data = await this.model.getData(this.name);
+    const data = await this.model.getData(location.hash.slice(1));
     this.view.displayContent(data);
   }
 }

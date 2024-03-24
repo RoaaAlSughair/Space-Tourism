@@ -1,6 +1,7 @@
 import { Data } from './Data/model.js';
 import { Router } from './Router/Router.js';
 
+import { HomeController } from './Home/HomeController.js';
 import { CrewController } from './Crew/CrewController.js';
 import { TechnologyController } from './Technology/TechnologyController.js';
 import { DestinationController } from './Destination/DestinationController.js';
@@ -17,6 +18,7 @@ const crewView = new CrewView();
 const technologyView = new TechnologyView();
 const destinationView = new DestinationView();
 
+const homeController = new HomeController(homeView);
 const crewController = new CrewController(data, crewView);
 const technologyController = new TechnologyController(data, technologyView);
 const destinationController = new DestinationController(data, destinationView);
@@ -24,7 +26,7 @@ const destinationController = new DestinationController(data, destinationView);
 const router = new Router();
 
 router.addRoute('home', () => {
-  homeView.displayContent();
+  homeController.updateView();
 });
 
 router.addRoute('crew', () => {

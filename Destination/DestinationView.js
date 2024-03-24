@@ -4,14 +4,7 @@ export class DestinationView {
     this.currentIndex = 0;
   }
 
-  displayContent(content) {
-    console.log(content);
-    this.body.innerHTML = '';
-
-    // Change the background image
-    this.body.style.backgroundImage =
-      'url("./assets/destination/background-destination-desktop.jpg")';
-
+  renderHeader() {
     // Header and its components
     const header = document.createElement('header');
     const img = document.createElement('img');
@@ -33,17 +26,41 @@ export class DestinationView {
     navLink4.href = '#technology';
     navLink4.textContent = '03 TECHNOLOGY';
 
+    header.appendChild(img);
+    header.appendChild(hr);
+    nav.appendChild(navLink1);
+    nav.appendChild(navLink2);
+    nav.appendChild(navLink3);
+    nav.appendChild(navLink4);
+    header.appendChild(nav);
+    this.body.appendChild(header);
+  }
+
+  displayContent(content) {
+    while (this.body.firstChild) {
+      this.body.removeChild(this.body.firstChild);
+    }
+
+    this.renderHeader();
+
+    // Change the background image
+    this.body.style.backgroundImage =
+      'url("./assets/destination/background-destination-desktop.jpg")';
+
     // Main
     const main = document.createElement('main');
+    main.id = 'main';
 
     // Page title
     const title = document.createElement('h5');
     title.textContent = '01 PICK YOUR DESTINATION';
-    title.className = "title";
+    title.className = 'title';
 
     // Carousel
+    const wrapper = document.createElement('div');
+    wrapper.className = 'destination-wrapper';
     const carouselContainer = document.createElement('div');
-    carouselContainer.className = 'carousel-container';
+    carouselContainer.className = 'carousel-container style-1';
     const imageCarousel = document.createElement('div');
     imageCarousel.classList.add('carousel-inner');
     const infoCarousel = document.createElement('div');
@@ -59,6 +76,7 @@ export class DestinationView {
       // Image Carousel
       const carouselImage = document.createElement('div');
       carouselImage.className = 'carousel-item';
+
       const img = document.createElement('img');
       img.src = elm.images.webp;
       img.alt = elm.name;
@@ -69,20 +87,52 @@ export class DestinationView {
       const carouselInfo = document.createElement('div');
       carouselInfo.className = 'carousel-item';
       carouselInfo.classList.add('destination-info');
+
       const planet = document.createElement('h2');
       planet.textContent = elm.name.toUpperCase();
+
       const desc = document.createElement('p');
       desc.textContent = elm.description;
+
       const hr = document.createElement('hr');
-      const distance = document.createElement('p');
-      distance.textContent = elm.distance;
-      const travel = document.createElement('p');
-      travel.textContent = elm.travel;
+
+      const distanceAndTravel = document.createElement('div');
+      distanceAndTravel.className = 'distance-and-travel';
+
+      const distance = document.createElement('div');
+
+      const distTerm = document.createElement('p');
+      distTerm.className = 'sub-heading-2';
+      distTerm.textContent = 'AVG. DISTANCE';
+
+      const distValue = document.createElement('p');
+      distValue.className = 'sub-heading-1';
+      distValue.textContent = elm.distance.toUpperCase();
+
+      const travel = document.createElement('div');
+
+      const travTerm = document.createElement('p');
+      travTerm.className = 'sub-heading-2';
+      travTerm.textContent = 'EST. TRAVEL TIME';
+
+      const travValue = document.createElement('p');
+      travValue.className = 'sub-heading-1';
+      travValue.textContent = elm.travel.toUpperCase();
+
+      distance.appendChild(distTerm);
+      distance.appendChild(distValue);
+
+      travel.appendChild(travTerm);
+      travel.appendChild(travValue);
+
+      distanceAndTravel.appendChild(distance);
+      distanceAndTravel.appendChild(travel);
 
       // Pagination nav
       const dot = document.createElement('a');
       dot.textContent = elm.name.toUpperCase();
       dot.classList.add('dot');
+      dot.classList.add('dot-1');
       dot.setAttribute('index', i);
 
       if (i === this.currentIndex) {
@@ -115,8 +165,7 @@ export class DestinationView {
       carouselInfo.appendChild(planet);
       carouselInfo.appendChild(desc);
       carouselInfo.appendChild(hr);
-      carouselInfo.appendChild(distance);
-      carouselInfo.appendChild(travel);
+      carouselInfo.appendChild(distanceAndTravel);
 
       carouselImage.appendChild(img);
 
@@ -127,20 +176,13 @@ export class DestinationView {
     });
 
     // Displaying the page
-    header.appendChild(img);
-    header.appendChild(hr);
-    nav.appendChild(navLink1);
-    nav.appendChild(navLink2);
-    nav.appendChild(navLink3);
-    nav.appendChild(navLink4);
-    header.appendChild(nav);
     infoAndPage.appendChild(pagination);
     infoAndPage.appendChild(infoCarousel);
     carouselContainer.appendChild(imageCarousel);
     carouselContainer.appendChild(infoAndPage);
-    main.appendChild(title);
-    main.appendChild(carouselContainer);
-    this.body.appendChild(header);
+    wrapper.appendChild(title);
+    wrapper.appendChild(carouselContainer);
+    main.appendChild(wrapper);
     this.body.appendChild(main);
   }
 }

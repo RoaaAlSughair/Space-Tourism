@@ -14,7 +14,7 @@ body {
   background-size: cover;
   font-family: 'Barlow Condensed', sans-serif;
   font-size: calc(1rem + 2px);
-  color: #D0D6F9;
+  color: #d0d6f9;
   min-height: 100vh;
 }
 
@@ -41,6 +41,7 @@ h3 {
 
 h4 {
   font-size: 2rem; /* 32px */
+  color: #979797;
 }
 
 h5 {
@@ -73,14 +74,15 @@ a:hover {
   text-decoration-color: rgba(208, 214, 249, 0.5);
 }
 
-a.active, a:hover {
+a.active,
+a:hover {
   text-decoration: underline;
   text-underline-offset: 1.5rem;
   text-decoration-thickness: 0.25rem;
 }
 
 header {
-  margin-top: 4.4vh;
+  margin-top: 4.4dvh;
   margin-left: 3.8vw;
   padding: 12px 0;
   display: flex;
@@ -94,26 +96,28 @@ header nav {
   padding: 0 24px;
   gap: 28px;
   background-color: rgba(255, 255, 255, 0.04);
-    backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
   width: 50%;
   height: 4.5rem;
 }
 
 hr {
-  color: #D0D6F9;
+  color: #d0d6f9;
   width: 40%;
   opacity: 25%;
 }
 
-main {
-  padding: 0 11.5vw;
-}
-
-.wrapper {
+.home-wrapper {
   display: flex;
   flex-direction: row;
   align-items: end;
   justify-content: space-between;
+}
+
+.home-wrapper,
+.destination-wrapper,
+.crew-wrapper {
+  margin: 0 11.5vw;
 }
 
 .introduction {
@@ -137,23 +141,23 @@ button {
 }
 
 button:hover {
+  stroke: #979797;
   animation: glow 1.5s linear infinite alternate;
 }
 
-@keyframes glow{
+@keyframes glow {
   to {
-    box-shadow: 0px 0px 20px 20px rgba(151, 151, 151, 0.4);
+    box-shadow: 0px 0px 88px 88px rgba(255, 255, 255, 10.36%);
   }
 }
 
-.title{
+.title {
   margin: 2rem 0;
 }
 
 .carousel-container {
   overflow: hidden;
   display: flex;
-  gap: 10%;
   align-items: stretch;
 }
 
@@ -181,15 +185,68 @@ button:hover {
   cursor: pointer;
 }
 
-.dot:hover, .dot.active {
+.dot-1:hover,
+.dot-1.active {
   text-underline-offset: 1rem;
+}
+
+.dot-2 {
+  background-color: #979797;
+  border-radius: 50%;
+  height: 1rem;
+  width: 1rem;
+}
+
+.dot-2:hover,
+.dot-2.active {
+  text-decoration: none;
+  background-color: white;
+}
+
+.dot-3 {
+  border: 1px solid white;
+  border-radius: 50%;
+  height: 5rem;
+  width: 5rem;
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.dot-3:hover,
+.dot-3.active {
+  color: black;
+  text-decoration: none;
+  background-color: white;
+}
+
+.style-1 {
+  gap: 10%;
+  align-items: stretch;
+}
+
+.style-2 {
+  align-items: center;
+}
+
+.style-3 {
+  gap: 10%;
+  align-items: center;
+}
+
+.destination-info h2 {
+  margin: 1rem 0;
 }
 
 .destination-info hr {
   width: 100%;
+  margin: 1rem 0;
 }
 
 .destination-info p {
-  margin: 1rem 0;
   line-height: 2rem;
+}
+
+.distance-and-travel {
+  display: flex;
+  justify-content: space-between;
 }

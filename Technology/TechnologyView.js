@@ -4,17 +4,11 @@ export class TechnologyView {
     this.currentIndex = 0;
   }
 
-  displayContent(content) {
-    this.body.innerHTML = '';
-
-    // Change the background image
-    this.body.style.backgroundImage =
-      'url("./assets/technology/background-technology-desktop.jpg")';
-
+  renderHeader() {
     // Header and its components
     const header = document.createElement('header');
     const img = document.createElement('img');
-    img.alt = "Logo";
+    img.alt = 'Logo';
     img.src = './assets/shared/logo.svg';
     const hr = document.createElement('hr');
     const nav = document.createElement('nav');
@@ -32,17 +26,41 @@ export class TechnologyView {
     navLink4.textContent = '03 TECHNOLOGY';
     navLink4.className = 'active';
 
+    header.appendChild(img);
+    header.appendChild(hr);
+    nav.appendChild(navLink1);
+    nav.appendChild(navLink2);
+    nav.appendChild(navLink3);
+    nav.appendChild(navLink4);
+    header.appendChild(nav);
+    this.body.appendChild(header);
+  }
+
+  displayContent(content) {
+    while (this.body.firstChild) {
+      this.body.removeChild(this.body.firstChild);
+    }
+
+    this.renderHeader()
+
+    // Change the background image
+    this.body.style.backgroundImage =
+      'url("./assets/technology/background-technology-desktop.jpg")';
+
     // Main
     const main = document.createElement('main');
+    main.id = 'main';
 
     // Page title
     const title = document.createElement('h5');
     title.textContent = '03 SPACE LAUNCH 101';
-    title.className = "title";
+    title.className = 'title';
 
     // Carousel
+    const wrapper = document.createElement('div');
+    wrapper.className = 'technology-wrapper';
     const carouselContainer = document.createElement('div');
-    carouselContainer.className = 'carousel-container';
+    carouselContainer.className = 'carousel-container style-3';
     const imageCarousel = document.createElement('div');
     imageCarousel.classList.add('carousel-inner');
     const infoCarousel = document.createElement('div');
@@ -66,7 +84,10 @@ export class TechnologyView {
       const carouselInfo = document.createElement('div');
       carouselInfo.className = 'carousel-item';
       carouselInfo.classList.add('destination-info');
-      const vehicle = document.createElement('h2');
+      const preTitle = document.createElement('p');
+      preTitle.className = 'sub-heading-2';
+      preTitle.textContent = 'THE TERMINOLOGY ...';
+      const vehicle = document.createElement('h3');
       vehicle.textContent = elm.name.toUpperCase();
       const desc = document.createElement('p');
       desc.textContent = elm.description;
@@ -74,8 +95,9 @@ export class TechnologyView {
 
       // Pagination nav
       const dot = document.createElement('a');
-      dot.textContent = elm.name.toUpperCase();
+      dot.textContent = i + 1;
       dot.classList.add('dot');
+      dot.classList.add('dot-3');
       dot.setAttribute('index', i);
 
       if (i === this.currentIndex) {
@@ -105,6 +127,7 @@ export class TechnologyView {
         this.classList.toggle('active');
       });
 
+      carouselInfo.appendChild(preTitle);
       carouselInfo.appendChild(vehicle);
       carouselInfo.appendChild(hr);
       carouselInfo.appendChild(desc);
@@ -118,20 +141,13 @@ export class TechnologyView {
     });
 
     // Displaying the page
-    header.appendChild(img);
-    header.appendChild(hr);
-    nav.appendChild(navLink1);
-    nav.appendChild(navLink2);
-    nav.appendChild(navLink3);
-    nav.appendChild(navLink4);
-    header.appendChild(nav);
     infoAndPage.appendChild(pagination);
     infoAndPage.appendChild(infoCarousel);
     carouselContainer.appendChild(infoAndPage);
     carouselContainer.appendChild(imageCarousel);
-    main.appendChild(title);
-    main.appendChild(carouselContainer);
-    this.body.appendChild(header);
+    wrapper.appendChild(title);
+    wrapper.appendChild(carouselContainer);
+    main.appendChild(wrapper);
     this.body.appendChild(main);
   }
 }
