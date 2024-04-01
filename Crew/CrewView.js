@@ -41,11 +41,19 @@ export class CrewView {
       this.body.removeChild(this.body.firstChild);
     }
 
-    this.renderHeader()
+    this.renderHeader();
 
-    // Change the background image
-    this.body.style.backgroundImage =
-      'url("./assets/crew/background-crew-desktop.jpg")';
+    // Change the background image according the screen width
+    if (window.innerWidth > 768) {
+      this.body.style.backgroundImage =
+        'url("./assets/crew/background-crew-desktop.jpg")';
+    } else if (window.innerWidth <= 768 && window.innerWidth > 375) {
+      this.body.style.backgroundImage =
+        'url("./assets/crew/background-crew-tablet.jpg")';
+    } else {
+      this.body.style.backgroundImage =
+        'url("./assets/crew/background-crew-mobile.jpg")';
+    }
 
     // Main
     const main = document.createElement('main');
@@ -138,11 +146,11 @@ export class CrewView {
     });
 
     // Displaying the page
-    infoAndPage.appendChild(title);
     infoAndPage.appendChild(infoCarousel);
     infoAndPage.appendChild(pagination);
     carouselContainer.appendChild(infoAndPage);
     carouselContainer.appendChild(imageCarousel);
+    wrapper.appendChild(title);
     wrapper.appendChild(carouselContainer);
     main.appendChild(wrapper);
     this.body.appendChild(main);

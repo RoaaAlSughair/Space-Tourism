@@ -1,21 +1,22 @@
+/* General Desktop Rules */
 * {
   padding: 0;
   margin: 0;
-  box-sizing: content-box;
+  box-sizing: border-box;
 }
 
 html {
-  font-size: 16px;
+  font-size: 16px; /* 1 rem */
 }
 
 body {
   background-position: center center;
   background-repeat: no-repeat;
+  background-attachment: fixed;
   background-size: cover;
   font-family: 'Barlow Condensed', sans-serif;
-  font-size: calc(1rem + 2px);
+  font-size: calc(1rem + 2px); /* 18px */
   color: #d0d6f9;
-  min-height: 100vh;
 }
 
 h1,
@@ -81,9 +82,50 @@ a:hover {
   text-decoration-thickness: 0.25rem;
 }
 
+main {
+  min-height: 100dvh;
+}
+
+.title {
+  margin: 2rem 0;
+}
+
+/* General Slider Rules */
+.carousel-container {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.carousel-inner {
+  display: flex;
+  min-width: 50%;
+}
+
+.carousel-item {
+  min-width: 100%;
+  display: none;
+}
+
+.active-item {
+  display: block;
+}
+
+.pagination {
+  display: flex;
+  margin-bottom: 2rem;
+  gap: 2rem;
+}
+
+.dot {
+  cursor: pointer;
+}
+
+/* Header Desktop */
 header {
   margin-top: 4.4dvh;
   margin-left: 3.8vw;
+  margin-bottom: 4.4dvh;
   padding: 12px 0;
   display: flex;
   justify-content: space-between;
@@ -101,23 +143,19 @@ header nav {
   height: 4.5rem;
 }
 
-hr {
+header hr {
   color: #d0d6f9;
   width: 40%;
   opacity: 25%;
 }
 
+/* Home Section Desktop */
 .home-wrapper {
+  padding: 0 11.5vw 7.5rem;
   display: flex;
   flex-direction: row;
-  align-items: end;
+  align-items: flex-end;
   justify-content: space-between;
-}
-
-.home-wrapper,
-.destination-wrapper,
-.crew-wrapper {
-  margin: 0 11.5vw;
 }
 
 .introduction {
@@ -151,86 +189,9 @@ button:hover {
   }
 }
 
-.title {
-  margin: 2rem 0;
-}
-
-.carousel-container {
-  overflow: hidden;
-  display: flex;
-  align-items: stretch;
-}
-
-.carousel-inner {
-  display: flex;
-  min-width: 50%;
-}
-
-.carousel-item {
-  min-width: 100%;
-  display: none;
-}
-
-.active-item {
-  display: block;
-}
-
-.pagination {
-  display: flex;
-  margin-bottom: 2rem;
-  gap: 2rem;
-}
-
-.dot {
-  cursor: pointer;
-}
-
-.dot-1:hover,
-.dot-1.active {
-  text-underline-offset: 1rem;
-}
-
-.dot-2 {
-  background-color: #979797;
-  border-radius: 50%;
-  height: 1rem;
-  width: 1rem;
-}
-
-.dot-2:hover,
-.dot-2.active {
-  text-decoration: none;
-  background-color: white;
-}
-
-.dot-3 {
-  border: 1px solid white;
-  border-radius: 50%;
-  height: 5rem;
-  width: 5rem;
-  font-size: 2.5rem;
-  text-align: center;
-}
-
-.dot-3:hover,
-.dot-3.active {
-  color: black;
-  text-decoration: none;
-  background-color: white;
-}
-
-.style-1 {
-  gap: 10%;
-  align-items: stretch;
-}
-
-.style-2 {
-  align-items: center;
-}
-
-.style-3 {
-  gap: 10%;
-  align-items: center;
+/* Destination Section Desktop */
+.destination-wrapper {
+  padding: 0 11.5vw;
 }
 
 .destination-info h2 {
@@ -249,4 +210,152 @@ button:hover {
 .distance-and-travel {
   display: flex;
   justify-content: space-between;
+}
+
+.style-1 {
+  gap: 10%;
+  align-items: stretch;
+}
+
+.dot-1:hover,
+.dot-1.active {
+  text-underline-offset: 1rem;
+}
+
+/* Crew Section Desktop */
+.crew-wrapper {
+  padding: 0 11.5vw;
+}
+
+.style-2 {
+  align-items: center;
+  justify-content: space-between;
+}
+
+.style-2 .carousel-inner {
+  min-width: auto;
+}
+
+.dot-2 {
+  background-color: #979797;
+  border-radius: 50%;
+  height: 1rem;
+  width: 1rem;
+}
+
+.dot-2:hover,
+.dot-2.active {
+  text-decoration: none;
+  background-color: white;
+}
+
+/* Technology Section Desktop */
+.technology-wrapper {
+  padding-left: 11.5vw;
+}
+
+.style-3 {
+  gap: 10%;
+  align-items: center;
+}
+
+.style-3 .carousel-inner {
+  min-width: auto;
+}
+
+.dot-3 {
+  border: 1px solid white;
+  border-radius: 50%;
+  height: 5rem;
+  width: 5rem;
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.dot-3:hover,
+.dot-3.active {
+  color: black;
+  text-decoration: none;
+  background-color: white;
+}
+
+/* Tablet and Mobile Versions */
+@media (max-width: 768px) {
+  /* Home Section Tablet */
+  .home-wrapper {
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem;
+    gap: 5rem;
+  }
+
+  .introduction {
+    width: 100%;
+    text-align: center;
+  }
+
+  .home-wrapper,
+  .crew-wrapper,
+  .destination-wrapper,
+  .technology-wrapper {
+    padding: 1rem;
+  }
+
+  .carousel-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .carousel-inner {
+    min-width: 100%;
+  }
+}
+
+@media (max-width: 365px) {
+  /* General Mobile Rules */
+  body {
+    font-size: calc(1rem - 1px); /* 15px */
+  }
+
+  h1 {
+    font-size: 5rem; /* 80px */
+  }
+
+  h2 {
+    font-size: 6.25rem; /* 100px */
+  }
+
+  h3 {
+    font-size: 3.5rem; /* 56px */
+  }
+
+  h4 {
+    font-size: 2rem; /* 32px */
+  }
+
+  h5 {
+    font-size: 1rem; /* 28px */
+  }
+
+  .sub-heading-1 {
+    font-size: 1.75rem; /* 28px */
+  }
+
+  .sub-heading-2 {
+    font-size: calc(1rem - 2px); /* 14px */
+  }
+
+  .home-wrapper,
+  .crew-wrapper,
+  .destination-wrapper,
+  .technology-wrapper {
+    padding: 0.5rem;
+  }
+
+  /* Home Section Mobile */
+  button {
+    height: calc(10rem - 10px); /* 150px */
+    width: calc(10rem - 10px); /* 150px */
+    font-size: 1.25rem; /* 20px */
+  }
 }

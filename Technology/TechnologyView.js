@@ -41,11 +41,19 @@ export class TechnologyView {
       this.body.removeChild(this.body.firstChild);
     }
 
-    this.renderHeader()
+    this.renderHeader();
 
-    // Change the background image
-    this.body.style.backgroundImage =
-      'url("./assets/technology/background-technology-desktop.jpg")';
+    // Change the background image according the screen width
+    if (window.innerWidth > 768) {
+      this.body.style.backgroundImage =
+        'url("./assets/technology/background-technology-desktop.jpg")';
+    } else if (window.innerWidth <= 768 && window.innerWidth > 375) {
+      this.body.style.backgroundImage =
+        'url("./assets/technology/background-technology-tablet.jpg")';
+    } else {
+      this.body.style.backgroundImage =
+        'url("./assets/technology/background-technology-mobile.jpg")';
+    }
 
     // Main
     const main = document.createElement('main');

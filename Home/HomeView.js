@@ -3,7 +3,7 @@ export class HomeView {
     this.body = document.getElementById('view');
   }
 
-  renderHeader() {
+  renderDesktopHeader() {
     // Header and its components
     const header = document.createElement('header');
     const img = document.createElement('img');
@@ -40,12 +40,21 @@ export class HomeView {
       this.body.removeChild(this.body.firstChild);
     }
 
-    this.renderHeader();
-
-    // Change the background image
-    this.body.style.backgroundImage =
-      'url("./assets/home/background-home-desktop.jpg")';
-
+    // Change the background image according the screen width
+    if (window.innerWidth > 768) {
+      this.renderDesktopHeader();
+      this.body.style.backgroundImage =
+        'url("./assets/home/background-home-desktop.jpg")';
+    } else if (window.innerWidth <= 768 && window.innerWidth > 375) {
+      this.renderDesktopHeader();
+      this.body.style.backgroundImage =
+      'url("./assets/home/background-home-tablet.jpg")';
+    } else {
+      this.renderDesktopHeader();
+      this.body.style.backgroundImage =
+      'url("./assets/home/background-home-mobile.jpg")';
+    }
+    
     // Main
     const main = document.createElement('main');
     main.id = 'main';
